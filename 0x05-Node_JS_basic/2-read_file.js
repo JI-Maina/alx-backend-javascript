@@ -35,12 +35,15 @@ function countStudents(path) {
       for (const [key, value] of Object.entries(fields)) {
         const len = value.length;
 
-        const list = [];
-        for (const idx of value) {
-          list.push(idx.firstname);
-        }
+        const names = () => {
+          let nameString = '';
+          for (const idx of value) {
+            nameString += `${idx.firstname}, `;
+          }
+          return nameString.trim().slice(0, -1);
+        };
 
-        console.log(`Number of students in ${key}: ${len}. List: ${list}`);
+        console.log(`Number of students in ${key}: ${len}. List: ${names()}`);
       }
     });
   } else {
